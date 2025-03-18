@@ -1,0 +1,29 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: notification-service
+
+  devtools:
+    restart:
+      poll-interval: 2s
+      quiet-period: 1s
+
+  config:
+    import: "optional:configserver:"
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Expose all Actuator endpoints
+  endpoint:
+    health:
+      show-details: always
